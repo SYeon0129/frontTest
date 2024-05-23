@@ -1,0 +1,75 @@
+#camp{
+    grid-template-rows: repeat(7,2.5rem);
+}
+
+.camp-list-container {
+    padding: 20px;
+  }
+  
+  .summary {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .filters {
+    margin-bottom: 20px;
+  }
+  
+  .filter-group {
+    margin-bottom: 10px;
+  }
+  
+  .filter-button {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .filter-button.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .grid {
+    display: grid;
+    gap: 20px;
+  }
+  
+  .camp-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .camp-image img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .camp-info {
+    padding: 16px;
+  }
+  
+  .camp-title {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+  
+  .camp-intro {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 12px;
+  }
+  
+  .camp-location {
+    font-size: 0.875rem;
+    color: #888;
+  }
+  

@@ -1,0 +1,31 @@
+/* 기본 버튼 스타일 */
+.filter-button {
+    background-color: lightgray; /* 기본 배경색 */
+    color: black; /* 기본 글자색 */
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+  /* 활성화된 버튼 스타일 */
+  .filter-button.active {
+    background-color: green !important; /* 활성화된 배경색 */
+    color: white; /* 활성화된 글자색 */
+  }
+  
+  .filters {
+    padding: 10px;
+    max-width: 500px;
+    margin-bottom: 0 !important; 
+    margin: auto;
+  }
+  
+  .filter-group {
+    display: flex;
+    align-items: center;
+    max-width: 500px; /* Adjust this value as needed */
+  }
+  
+  .filter-group span {
+    margin-right: 10px;
+  }
