@@ -11,6 +11,7 @@ import SearchF from '@/components/mapcom/SearchF';
 import ReviewWrite from '@/components/reviewcom/ReviewWrite';
 import ReviewList from '@/components/reviewcom/ReviewList';
 import CampLikeButton from '@/components/camp/CampLikeButton';
+import './CampLikeButton.css';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -127,27 +128,20 @@ const MapReadPage = () => {
                 <div className="mt-4 grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
                   <span className="text-gray-600">{campingData.manageSttus}</span>
                   {/* Add other details here */}
-                  
                 </div>
               </div>
-          <CampLikeButton campId={contentId}  memberemail={email} />
-              <div className='mt-10 grid grid-cols-2 gap-3'>
+
+              <div className='mt-10 grid grid-cols-2 gap-3 mb-10'>
                 <div
                   className="w-full text-center items-center justify-center rounded-md border border-transparent bg-green-600 px-8 py-3 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
                   <a href={campingData.homepage} className='w-full'>예약하러가기</a>
                 </div>
-                <button 
-                  className='flex w-full items-center justify-center font-medium rounded-md shadow-md hover:bg-blue-gray-50'
-                  onClick={handleLike}
-                  disabled={isLiked}
-                >
-                  <FaRegHeart />
-                  <p className='p-2'>{isLiked ? '찜 완료' : '찜하기'}</p>
-                </button>
-
-                <ReviewList contentId={contentId} />
+                  <div className='flex w-full items-center justify-center font-medium rounded-md shadow-md hover:bg-blue-gray-50 hover:cursor-pointer'>
+                  <CampLikeButton campId={contentId} memberemail={email} />
+                  </div>
                 
               </div>
+              <ReviewList contentId={contentId} />
               <ReviewWrite contentId={contentId} />
      
           </div>
