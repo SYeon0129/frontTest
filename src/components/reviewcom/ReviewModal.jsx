@@ -15,7 +15,7 @@ const ReviewModal = ({ isOpen, onClose, review }) => {
 
   return ReactDOM.createPortal(
     <div className="modal-overlay" onClick={handleBackgroundClick}>
-        <div className="modal-content grid grid-cols-2 gap-5 p-10">
+        <div className="modal grid grid-cols-2 gap-5 p-10">
           <div className='col border-r pr-10'>
           <ImageDisplay fileName={review.imageFile} />
           </div>

@@ -70,7 +70,7 @@ const MyReviewList = () => {
         </thead>
         <tbody>
           {getCurrentPageItems().map((review) => (
-            <tr key={review.id} className='border-b'>
+            <tr key={review.reviewId} className='border-b'>
               <td className='py-2 hover:cursor-pointer' onClick={() => openModal(review)}>
                 {review.title}
               </td>
@@ -82,7 +82,7 @@ const MyReviewList = () => {
               </td>
               <td className='py-2'>
                 <button
-                  onClick={() => handleDelete(review.id)}
+                  onClick={() => handleDelete(review.reviewId)}
                   className='text-red-500 hover:text-red-700'
                 >
                   삭제

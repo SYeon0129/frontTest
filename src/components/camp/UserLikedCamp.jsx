@@ -27,9 +27,7 @@ const UserLikedCamps = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div>
-      <h2>찜한 캠핑장 목록</h2>
-      <ul>
+    <div className='grid grid-cols-1 gap-3 p-3 md:grid-cols-3 sm:grid-cols-2'>
       {likedCamps.map(camp => (
             <CampCard
             key={camp.contentId}
@@ -41,7 +39,6 @@ const UserLikedCamps = () => {
             addr1={camp.addr1}
           />
                 ))}
-      </ul>
     </div>
   );
 };

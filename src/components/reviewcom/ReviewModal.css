@@ -9,11 +9,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 /* Modal 스타일 */
 .modal {
+  background: white;
   border-radius: 5px;
   max-width: 500px;
   width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }

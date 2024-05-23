@@ -12,8 +12,6 @@ const ReviewBody =() => {
     const fetchData = async () => {
       try {
           const response = await axios.get(`http://localhost:8080/api/reviews/all`);
-
-
         if (response.data) {
           setreviewData(response.data);
         } else {

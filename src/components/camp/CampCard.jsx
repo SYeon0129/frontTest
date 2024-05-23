@@ -20,7 +20,7 @@ const CampCard = ({ contentId, firstImageUrl, facltNm, induty, lctCl, addr1 }) =
         </Link>
         </div>
 
-        <div className='grid grid-cols-6 justify-between my-auto'>
+        <div className='grid grid-cols-6 justify-between my-auto w-auto'>
           <div className='col-span-5'>
           <Typography variant='h5'>{facltNm}</Typography>
           </div>
