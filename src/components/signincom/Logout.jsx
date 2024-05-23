@@ -11,9 +11,9 @@ function Logout() {
 	const logout = () => {
 		
 		localStorage.removeItem("bbs_access_token");
+		localStorage.removeItem("refreshToken");
 		localStorage.removeItem("id");
 		localStorage.removeItem("username");
-
 		setAuth(null);
 		
 		navigate("/");

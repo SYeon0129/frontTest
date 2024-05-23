@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaHeart, FaRegHeart } from 'react-icons/fa'; // Font Awesome icons for heart
 
-const CampLikeButton = ({ campId, memberemail }) => {
+const CampLikeButton = ({ campId }) => {
     const [liked, setLiked] = useState(false);
+    const email = localStorage.getItem("id");
 
     useEffect(() => {
         // Check if the user has already liked this camp
@@ -11,7 +12,7 @@ const CampLikeButton = ({ campId, memberemail }) => {
             try {
                 const response = await axios.post('http://localhost:8080/api/camplikes/liked', {
                     contentId: campId,
-                    email: memberemail
+                    email: email
                 });
                 setLiked(response.data.liked);
             } catch (error) {
@@ -20,19 +21,19 @@ const CampLikeButton = ({ campId, memberemail }) => {
         };
 
         checkIfLiked();
-    }, [campId, memberemail]);
+    }, [campId, email]);
 
     const handleLikeToggle = async () => {
         try {
             if (liked) {
                 await axios.post('http://localhost:8080/api/camplikes/unlike', {
                     contentId: campId,
-                    email: memberemail
+                    email: email
                 });
             } else {
                 await axios.post('http://localhost:8080/api/camplikes/like', {
                     contentId: campId,
-                    email: memberemail
+                    email: email
                 });
             }
             setLiked(!liked);

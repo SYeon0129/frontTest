@@ -17,7 +17,6 @@ export function Navbar({ brandName, routes, action }) {
   const accessToken = localStorage.getItem("bbs_access_token");
   const email = localStorage.getItem("id");
   const username = localStorage.getItem("username");
-  const kakaoid = localStorage.getItem("kakaoid");
 // 값이 null이면 로그인 버튼, 아니면 로그아웃 버튼 출력
 const buttonContent = accessToken ? (
   <div className="flex gap-3">

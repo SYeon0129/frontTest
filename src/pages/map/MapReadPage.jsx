@@ -127,6 +127,7 @@ const MapReadPage = () => {
                 <div className="mt-4 grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
                   <span className="text-gray-600">{campingData.manageSttus}</span>
                   {/* Add other details here */}
+                  
                 </div>
               </div>
           <CampLikeButton campId={contentId}  memberemail={email} />

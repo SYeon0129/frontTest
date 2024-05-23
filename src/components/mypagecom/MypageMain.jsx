@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Left from './MypageLeft';
 import Profile from './Profile';
 import MyReviewList from '../reviewcom/MyReviewList';
-import LikedCamps from '../camp/LikedCamps';
+import UserLikedCamps from '../camp/UserLikedCamp';
 
 const MypageMain = () => {
     const email = localStorage.getItem("id");     
@@ -21,7 +21,7 @@ const MypageMain = () => {
                 {/* 오른쪽 */}
                 <div className='col-span-3 p-6 text-center rounded-md shadow-md'>
                     {pageId === 'profile' && <Profile />}
-                    {pageId === 'favorite' && <LikedCamps memberEmail={email} />}
+                    {pageId === 'favorite' &&  <UserLikedCamps />}
                     {pageId === 'review' && <MyReviewList />}
                 </div>
             </div>

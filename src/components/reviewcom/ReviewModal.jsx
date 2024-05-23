@@ -24,7 +24,7 @@ const ReviewModal = ({ isOpen, onClose, review }) => {
             <div className='border-b'>
               <Typography
               variant='h5'>
-                {review.contentId}
+                {review.facltNm}
               </Typography>
             </div>
             <div className='border-b'>

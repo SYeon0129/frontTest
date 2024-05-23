@@ -85,7 +85,7 @@ const ReviewWrite = ( {contentId} ) => {
         // 리뷰 데이터 전송
         const response = await axios.post('http://localhost:8080/api/reviews/create', reviewData);
         console.log('Review submitted:', response.data);
-        // 성공 메시지 표시 또는 폼 초기화 등의 후속 조치
+        window.location.reload()
       } catch (error) {
         console.error('There was an error!', error);
       }

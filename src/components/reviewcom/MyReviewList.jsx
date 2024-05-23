@@ -37,6 +37,18 @@ const MyReviewList = () => {
     fetchData();
   }, [emails]);
 
+  const handleDelete = async (reviewId) => {
+    const confirmed = window.confirm('정말 삭제하시겠습니까?');
+    if (confirmed) {
+      try {
+        await axios.delete(`http://localhost:8080/api/reviews/delete/${reviewId}`);
+        setReviewData(reviewData.filter(review => review.id !== reviewId));
+      } catch (error) {
+        console.error('Error deleting review:', error);
+      }
+    }
+  };
+
   const totalPages = Math.ceil(reviewData.length / itemsPerPage);
 
   const getCurrentPageItems = () => {
@@ -53,6 +65,7 @@ const MyReviewList = () => {
             <th className='py-2'>제목</th>
             <th className='py-2'>내용</th>
             <th className='py-2'>날짜</th>
+            <th className='py-2'>삭제</th>
           </tr>
         </thead>
         <tbody>
@@ -66,6 +79,14 @@ const MyReviewList = () => {
               </td>
               <td className='py-2'>
                 {review.createdDate}
+              </td>
+              <td className='py-2'>
+                <button
+                  onClick={() => handleDelete(review.id)}
+                  className='text-red-500 hover:text-red-700'
+                >
+                  삭제
+                </button>
               </td>
             </tr>
           ))}

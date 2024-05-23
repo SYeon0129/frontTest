@@ -17,6 +17,13 @@ const SignUpExam = () => {
   const [checkPwd, setCheckPwd] = useState("");
   const [birth, setBirth] = useState(""); // birth 상태 추가
 
+
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = (event) => {
+    setIsChecked(event.target.checked);
+  };
+  
   const navigate = useNavigate();
 
   const changeEmail = (event) => {
@@ -77,8 +84,7 @@ const SignUpExam = () => {
       .then((resp) => {
         console.log("[Join.js] join() success :D");
         console.log(resp.data);
-
-        alert(resp.data.username + "님 회원가입을 축하드립니다 🎊");
+        alert(`${name}님 회원가입을 축하드립니다 🎊`);
         window.location.href = "/signin";
       })
       .catch((err) => {
@@ -183,21 +189,22 @@ const SignUpExam = () => {
 
             </div>
             <Checkbox
-              label={
-                <Typography
-                  variant="small"
-                  color="gray"
-                  className="flex items-center justify-start font-medium"
-                >
-                  개인정보 조회 동의
-                </Typography>
-              }
-              containerProps={{ className: "-ml-2.5" }}
-            />
-
-            <Button className="mt-6" onClick={join} fullWidth>
-              회원가입
-            </Button>
+        checked={isChecked}
+        onChange={handleCheckboxChange}
+        label={
+          <Typography
+            variant="small"
+            color="gray"
+            className="flex items-center justify-start font-medium"
+          >
+            개인정보 조회 동의
+          </Typography>
+        }
+        containerProps={{ className: "-ml-2.5" }}
+      />
+      <Button className="mt-6" onClick={join} fullWidth disabled={!isChecked}>
+        회원가입
+      </Button>
 
             <Typography variant="paragraph" className="text-center text-blue-gray-500 font-medium mt-4">
               이미 계정이 있으신가요?

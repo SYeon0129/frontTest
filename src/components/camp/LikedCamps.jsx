@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import CampCard from './CampCard';
 
 const LikedCamps = ({ memberEmail }) => {
     const [likedCamps, setLikedCamps] = useState([]);
@@ -23,10 +24,16 @@ const LikedCamps = ({ memberEmail }) => {
         <div>
             <h2>Liked Camps</h2>
             <ul>
-                {likedCamps.map(camp => (
-                    <li key={camp.likeId}>
-                        {`Camp ID: ${camp.campId}, Liked Time: ${camp.likedTime}`}
-                    </li>
+            {likedCamps.map(camp => (
+            <CampCard
+            key={camp.contentId}
+            contentId={camp.contentId}
+            firstImageUrl={camp.firstImageUrl ? camp.firstImageUrl : "img/camp/camp1.jpg"}
+            facltNm={camp.facltNm}
+            induty={camp.induty}
+            lctCl={camp.lctCl}
+            addr1={camp.addr1}
+          />
                 ))}
             </ul>
         </div>
