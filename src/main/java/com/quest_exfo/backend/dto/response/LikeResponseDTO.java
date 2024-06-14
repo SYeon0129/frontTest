@@ -3,6 +3,7 @@ package com.quest_exfo.backend.dto.response;
 import com.quest_exfo.backend.common.BoothCategory;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Setter
@@ -20,4 +21,5 @@ public class LikeResponseDTO {
     private LocalTime endTime;
     private BoothCategory category;
     private String imgPath;
+    private LocalDate date;
 }

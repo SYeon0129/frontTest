@@ -4,6 +4,7 @@ import com.quest_exfo.backend.common.BoothCategory;
 import com.quest_exfo.backend.common.BoothType;
 import com.quest_exfo.backend.entity.Booth;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,5 +27,10 @@ public interface BoothRepository extends JpaRepository<Booth, Long> {
   Page<Booth> findByTypeOrderByDateDesc(BoothType type, Pageable pageable);
 
   Optional<Booth> findByBoothId(Long boothId);
+
+  @Query("SELECT b FROM Booth b WHERE b.date = CURRENT_DATE AND b.startTime BETWEEN CURRENT_TIME AND :thirtyMinutesLater")
+  List<Booth> findBoothsStartingIn30Minutes(LocalTime thirtyMinutesLater);
+
+
 
 }

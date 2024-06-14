@@ -56,7 +56,9 @@ public class SecurityConfig{
                         "/api/member/delete",
                         //기타
                         "/postTest",
-                        "/getTest"
+                        "/getTest",
+                            "/notifications"
+
                     ).permitAll()
                     .anyRequest().authenticated()
             )
