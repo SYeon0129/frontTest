@@ -4,6 +4,8 @@ import BoothInsertPage from "../pages/BoothInsertPage";
 import AuthKakao from "../components/mypageCom/AuthKakao";
 import Video from "../pages/Video";
 import { AuthProvider } from "../context/AuthContext";
+import NotificationComponent from "../components/notification/Notification";
+import Notification from "../components/notification/Notification";
 const { createBrowserRouter } = require("react-router-dom");
 
 const Home = lazy(() => import("../pages/IndexPage"));
@@ -28,6 +30,7 @@ const root = createBrowserRouter([
         element: (
           <AuthProvider>
         <Suspense fallback={<Loading />}>
+        <Notification />
             <Home/>
             </Suspense>
             </AuthProvider>
@@ -38,6 +41,7 @@ const root = createBrowserRouter([
       element: (
         <AuthProvider>
         <Suspense fallback={<Loading />}>
+        <Notification />
           <DetailForum />
         </Suspense>
         </AuthProvider>
@@ -48,6 +52,7 @@ const root = createBrowserRouter([
       element: (
         <AuthProvider>
         <Suspense fallback={<Loading />}>
+        <Notification />
           <MyPage />
         </Suspense>
         </AuthProvider>
@@ -58,6 +63,7 @@ const root = createBrowserRouter([
     element: (
       <AuthProvider>
       <Suspense fallback={<Loading />}>
+      <Notification />
         <BoothHeld />
       </Suspense>
       </AuthProvider>
@@ -68,6 +74,7 @@ const root = createBrowserRouter([
     element: (
       <AuthProvider>
       <Suspense fallback={<Loading />}>
+      <Notification />
         <ChattingRoom />
       </Suspense>
       </AuthProvider>
@@ -78,16 +85,18 @@ const root = createBrowserRouter([
     element: (
       <AuthProvider>
       <Suspense fallback={<Loading />}>
+      <Notification />
         <Login />
       </Suspense>
       </AuthProvider>
     ),
   },
   {
-    path: "/auth/kakao",
+    path: "/api/auth/kakao",
     element: (
       <AuthProvider>
     <Suspense fallback={<Loading />}>
+    <Notification />
         <AuthKakao />
     </Suspense>
     </AuthProvider>
@@ -98,6 +107,7 @@ const root = createBrowserRouter([
     element: (
       <AuthProvider>
       <Suspense fallback={<Loading />}>
+      <Notification />
         <BoothListPage />
       </Suspense>
       </AuthProvider>
@@ -108,6 +118,7 @@ const root = createBrowserRouter([
     element: (
       <AuthProvider>
       <Suspense fallback={<Loading />}>
+      <Notification />
         <BoothDetailPage />
       </Suspense>
       </AuthProvider>
@@ -118,6 +129,7 @@ const root = createBrowserRouter([
     element: (
       <AuthProvider>
       <Suspense fallback={<Loading />}>
+      <Notification />
         <BoothListPage type="COMPANY" />
       </Suspense>
       </AuthProvider>
@@ -128,6 +140,7 @@ const root = createBrowserRouter([
     element: (
       <AuthProvider>
       <Suspense fallback={<Loading />}>
+      <Notification />
         <BoothListPage type="INDIVIDUAL" />
       </Suspense>
       </AuthProvider>
@@ -138,6 +151,8 @@ const root = createBrowserRouter([
     element: (
       <AuthProvider>
       <Suspense fallback={<Loading />}>
+      <Notification />
+      <Notification />
         <VideoRoom/>
       </Suspense>
       </AuthProvider>
@@ -148,6 +163,7 @@ const root = createBrowserRouter([
     element: (
       <AuthProvider>
       <Suspense fallback={<Loading />}>
+      <Notification />
         <BoothInsertPage />
       </Suspense>
       </AuthProvider>
@@ -158,11 +174,23 @@ const root = createBrowserRouter([
         element: (
           <AuthProvider>
             <Suspense fallback={<Loading />}>
+            <Notification />
             <Video />
             </Suspense>
             </AuthProvider>
         ),
     },
+    {
+      path: "/notiTest",
+      element: (
+        <AuthProvider>
+          <Suspense fallback={<Loading />}>
+          <Notification />
+          <NotificationComponent />
+          </Suspense>
+          </AuthProvider>
+      ),
+  },
 
 ]);
 

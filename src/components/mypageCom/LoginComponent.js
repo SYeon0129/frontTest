@@ -62,7 +62,7 @@ const LoginComponent = () => {
             });
     
             // Extract data from response
-            const { token: accessToken, refreshToken, email: userEmail, name: userName } = response.data;
+            const { accessToken: accessToken, refreshToken, email: userEmail, name: userName } = response.data;
     
             alert(`로그인 성공! ${userName}님 환영합니다!`);
             
@@ -158,7 +158,7 @@ const LoginComponent = () => {
             </p>
             <div className="flex justify-center items-center mt-3">
                 <div className='sign-up-content-sign-in-button-box'>
-                    <a href='/oauth2/authorization/kakao'> <img className="w-12" src='/images/kakao-icon.png' /> </a>
+                    <a href='/api/auth/kakao'> <img className="w-12" src='/images/kakao-icon.png' /> </a>
                     <a href='/oauth2/authorization/naver'> <img className="w-12" src='/images/naver-icon.png' /> </a>
                     <a href='/oauth2/authorization/google'> <img className="w-12" src='/images/google-icon.png' /> </a>
                 </div>

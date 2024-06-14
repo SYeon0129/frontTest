@@ -37,7 +37,7 @@ function FavoriteList() {
               <div>
                 <h3 style={{ marginBottom: "5px", whiteSpace: "nowrap" }}>부스 제목: {booth.title}</h3> 
                 <p style={{ marginBottom: "5px" }}>주최: {booth.openerName}</p>
-                <p style={{ marginBottom: "5px" }}>일시: {booth.date} {booth.startTime} ~ {booth.endTime}</p>
+                <p style={{ marginBottom: "5px" }}>일시: {booth.date}, {booth.startTime} ~ {booth.endTime}</p>
               </div>
             </div>
           ))}

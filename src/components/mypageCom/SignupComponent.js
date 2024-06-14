@@ -68,7 +68,7 @@ const SignupComponent = () => {
         }
     
         try {
-            const response = await axios.post(API_URLS.SEND_AUTHENTICATION_EMAIL, { email }, {
+            const response = await axios.post(API_URLS.SEND_CODE, { email }, {
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -99,7 +99,7 @@ const SignupComponent = () => {
         }
     
         try {
-            const response = await axios.post(API_URLS.CHECK_AUTHENTICATION_EMAIL, { email, code: inputCode }, {
+            const response = await axios.post(API_URLS.VERIFIY_CODE, { email, code: inputCode }, {
                 headers: {
                     'Content-Type': 'application/json'
                 },

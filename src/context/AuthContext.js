@@ -7,11 +7,14 @@ const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const [authState, setAuthState] = useState({
     accessToken: localStorage.getItem('accessToken'),
     refreshToken: localStorage.getItem('refreshToken'),
     email: localStorage.getItem('email'),
-    name: localStorage.getItem('name')
+    name: localStorage.getItem('name'),
+    isLoggedIn: false, // 예시: isLoggedIn을 초기값으로 설정
   });
 
   const logout = useCallback(() => {
@@ -25,6 +28,7 @@ const AuthProvider = ({ children }) => {
       email: null,
       name: null
     });
+    setIsLoggedIn(false);
     navigate('/');
   }, [setAuthState]);
 
@@ -50,6 +54,7 @@ const AuthProvider = ({ children }) => {
       email,
       name,
     }));
+    setIsLoggedIn(true);
   }, [setAuthState]);
 
   const refreshToken = useCallback(async () => {
@@ -82,7 +87,7 @@ const AuthProvider = ({ children }) => {
   
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const accessToken = params.get('token');
+    const accessToken = params.get('accessToken');
     const refreshToken = params.get('refreshToken');
     const email = params.get('email');
     const name = params.get('name');
@@ -94,7 +99,7 @@ const AuthProvider = ({ children }) => {
   }, [setTokens]);
 
   return (
-    <AuthContext.Provider value={{ authState, setTokens, logout }}>
+    <AuthContext.Provider value={{ authState, setTokens, logout, isLoggedIn }}>
       {children}
     </AuthContext.Provider>
   );

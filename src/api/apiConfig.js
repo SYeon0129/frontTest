@@ -14,6 +14,8 @@ export const API_URLS = {
     SEND_AUTHENTICATION_EMAIL: `${BASE_URL}/api/auth/send-code`,
     CHECK_AUTHENTICATION_EMAIL: `${BASE_URL}/api/auth/verify-code`,
     TOKEN_REFRECH: `${BASE_URL}/api/auth/refresh`,
+    SEND_CODE: `${BASE_URL}/api/mail/send-code`,
+    VERIFIY_CODE: `${BASE_URL}/api/mail/verify-code`,
 
     // 멤버
     SIGN_UP: `${BASE_URL}/api/member/signup`,
