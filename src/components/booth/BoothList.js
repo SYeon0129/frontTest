@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { API_URLS } from "../../api/apiConfig";
+import BoothLikeButton from "../boothCom/BoothLikeButton";
 
 function BoothList({ type }) {
   const [booths, setBooths] = useState([]);
@@ -74,13 +75,15 @@ function BoothList({ type }) {
             <h2 className="text-xl font-bold">부스 제목 : {booth.title}</h2>
             <p className="text-gray-700">부스 소개 : {booth.info}</p>
             <p className="text-gray-700">부스 카테고리 : {booth.category}</p>
-
+            <div className="flex gap-5">
             <Link
               to={`/booth/${booth.boothId}`}
               className="text-blue-500 hover:underline"
             >
               자세히 보기
             </Link>
+            <BoothLikeButton boothId={booth.boothId} member_id={localStorage.getItem('member_id')}/>
+            </div>
           </div>
         ))}
       </div>

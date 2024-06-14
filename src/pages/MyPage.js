@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import BasicLayout from "../layouts/BasicLayout";
 import BoothHeldComponent from '../components/BoothHeldComponent';
 import MyProfileComponent from '../components/MyProfileComponent';
@@ -9,11 +9,15 @@ import profileImg from '../img/profile.png';
 
 function MyPage() {
     const navigate = useNavigate();
+    const location = useLocation();
     const [token, setToken] = useState(null);
     const [email, setEmail] = useState(null);
     const [name, setName] = useState(null);
 
-    const [activeTab, setActiveTab] = useState('boothheld');
+    // Read the query parameter to set the default active tab
+    const queryParams = new URLSearchParams(location.search);
+    const initialTab = queryParams.get('tab') || 'mypage';
+    const [activeTab, setActiveTab] = useState(initialTab);
 
 
     useEffect(() => {
@@ -47,9 +51,15 @@ function MyPage() {
           case 'historylist':
             return <ViewHistoryComponent />;
           default:
-            return <BoothHeldComponent />;
+            return <MyProfileComponent userProfile={userProfile} />;
         }
     };
+    
+    const handleTabClick = (tab) => {
+      setActiveTab(tab);
+      navigate(`?tab=${tab}`);
+  };
+
 
     const tabStyle = (isActive) => ({
       padding: '10px 20px',
@@ -71,24 +81,15 @@ function MyPage() {
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', height: '100vh' }}>
                 <img src={profileImg} alt="프로필 이미지" className="w-32 h-32 rounded-md items-center" />
                 
-                
-                {/* 테스트 */}
-                <img src='https://silsil-bucket.s3.ap-northeast-2.amazonaws.com/member_profile_img/dcabf259-4cca-42aa-b999-d7784dadba33_dasdasdasdasd.jpg' alt="프로필 이미지" className="w-32 h-32 rounded-md items-center" />
-                {/* <img src={userProfile.imgPath} alt={userProfile.name} className="w-full h-128 object-cover" /> */}
-                {/* //이런식으로 해주셈 쓰면될거임 */}
-
-                
                 <p className="text-lg">{userProfile.nickname}</p>
                 <p className="text-lg">{userProfile.email}</p>
                 <p>Logged in with token: {token}</p>
 
-
-
                   <div style={{ display: 'flex', width: '100%', justifyContent: 'center', listStyle: 'none', padding: 0 }}>
-                  <div style={tabStyle(activeTab === 'boothheld')} onClick={() => setActiveTab('boothheld')}>부스 개최</div>
-                  <div style={tabStyle(activeTab === 'mypage')} onClick={() => setActiveTab('mypage')}>내 정보</div>
-                  <div style={tabStyle(activeTab === 'favoritelist')} onClick={() => setActiveTab('favoritelist')}>찜한 목록</div>
-                  <div style={tabStyle(activeTab === 'historylist')} onClick={() => setActiveTab('historylist')}>시청 목록</div>
+                      <div style={tabStyle(activeTab === 'boothheld')} onClick={() => handleTabClick('boothheld')}>부스 개최</div>
+                      <div style={tabStyle(activeTab === 'mypage')} onClick={() => handleTabClick('mypage')}>내 정보</div>
+                      <div style={tabStyle(activeTab === 'favoritelist')} onClick={() => handleTabClick('favoritelist')}>찜한 목록</div>
+                      <div style={tabStyle(activeTab === 'historylist')} onClick={() => handleTabClick('historylist')}>시청 목록</div>
                 </div>
                 <div style={{ width: '100%', padding: '20px' }}>
                     {renderContent()}
